@@ -1,0 +1,1 @@
+class FailedToFetchDataException implements Exception{}
