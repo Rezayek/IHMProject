@@ -1,13 +1,14 @@
 import 'package:coffeeihmproject/Services/auth/api_controller/auth_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../holders/current_user.dart';
 import '../api_controller/auth_services.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
+  CurrentUser currentUser = CurrentUser();
   AuthBloc(AuthServices provider) : super(const AuthStateUnInitialized()) {
-
     on<AuthEventInitialize>(
       ((event, emit) async {
         final user = provider.currentUser;
@@ -25,6 +26,9 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final password = event.password;
         try {
           final user = await provider.logIn(email: email, password: password);
+          
+          currentUser.setUser(user);
+          
           emit(AuthStateLoggedIn(user: user));
         } on Exception catch (e) {
           emit(AuthStateLoggedOut(exception: e));
@@ -52,6 +56,8 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
             password: password,
             birthday: birthday,
             phoneNumber: phone);
+
+        currentUser.setUser(user);
 
         emit(AuthStateLoggedIn(user: user));
       } on Exception catch (e) {

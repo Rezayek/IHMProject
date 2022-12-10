@@ -22,14 +22,3 @@ class DataStateGetDataHomeBestOffer extends DataState {
 }
 
 
-class DataStateGetCategorieData extends DataState {
-  final Exception? exception;
-  final Future categorieData;
-  const DataStateGetCategorieData(this.categorieData,{required this.exception}) : super();
-}
-
-class DataStateGetItemData extends DataState {
-  final Exception? exception;
-  final Future itemData;
-  const DataStateGetItemData(this.itemData, {required this.exception}) : super();
-}

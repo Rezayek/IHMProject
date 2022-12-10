@@ -16,12 +16,12 @@ class InfoMainContainer extends StatelessWidget {
       padding: const EdgeInsets.all(3.0),
       child: SizedBox(
         height: 155,
-        width: MediaQuery.of(context).size.width * 0.38,
+        width: MediaQuery.of(context).size.width * 0.4,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            TitleWidget(text: item.modelName.isNotEmpty? item.modelName: "itemm???", size: 20, textWeight: FontWeight.w500, textColor: Colors.black, paddingTop: 5, paddingBottom: 2, paddingLeft: 5, aligment: Alignment.centerLeft),
+            TitleWidget(text: item.modelName.isNotEmpty? item.modelName: "itemm???", size: 18, textWeight: FontWeight.w500, textColor: Colors.black, paddingTop: 5, paddingBottom: 2, paddingLeft: 5, aligment: Alignment.centerLeft),
             const LineWidget(isLeft: false, isTop: true, height:3,),
             PriceWidget(price: item.modelPrice, percentage: item.modelPercentage, height: 40, width: MediaQuery.of(context).size.width * 0.35, iconSize: 22, fontSize: 22),
             const LineWidget(isLeft: false, isTop: true, height: 3,),

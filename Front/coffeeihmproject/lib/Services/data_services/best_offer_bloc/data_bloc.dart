@@ -20,32 +20,11 @@ class DataBloc extends Bloc<DataEvent, DataState> {
       Iterable<DataModel> bestOffers = const Iterable.empty();
       try {
         bestOffers = await provider.getBestOffer();
-        debug.log(bestOffers.first.modelId);
+
+        
         emit(DataStateGetDataHomeBestOffer(null, bestOffers));
       } on Exception catch (e) {
         emit(DataStateGetDataHomeBestOffer(e, bestOffers));
-      }
-    });
-
-    
-
-    on<DataEventCategorieData>((event, emit) {
-      Future categorieItems = Future(() {});
-      try {
-        categorieItems = provider.getCategorieItems(categorie: event.categorie);
-        emit(DataStateGetCategorieData(categorieItems, exception: null));
-      } on Exception catch (e) {
-        emit(DataStateGetCategorieData(categorieItems, exception: e));
-      }
-    });
-
-    on<DataEventItemData>((event, emit) {
-      Future itemData = Future(() {});
-      try {
-        itemData = provider.getItem(itemId: event.itemId);
-        emit(DataStateGetCategorieData(itemData, exception: null));
-      } on Exception catch (e) {
-        emit(DataStateGetCategorieData(itemData, exception: e));
       }
     });
   }

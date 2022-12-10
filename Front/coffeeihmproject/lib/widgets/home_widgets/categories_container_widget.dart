@@ -6,7 +6,7 @@ import 'categorie_row_widget.dart';
 
 
 enum Categories { 
-   beens,
+   beans,
    machines,
    products,
    gifts,
@@ -44,7 +44,7 @@ class _CategoriesContainerWidgetState extends State<CategoriesContainerWidget> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.center,
               children: const [
-                CategorieRowWidget(categorie: [Categories.beens, Categories.machines],),
+                CategorieRowWidget(categorie: [Categories.beans, Categories.machines],),
                 CategorieRowWidget(categorie: [Categories.products, Categories.gifts],),
               ],
             ),

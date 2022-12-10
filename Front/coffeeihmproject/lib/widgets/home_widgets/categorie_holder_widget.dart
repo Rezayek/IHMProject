@@ -51,7 +51,7 @@ class CategorieHolder extends StatelessWidget {
                   )]
                 ),
               ),
-              TitleWidget(text: categorie.name, size: 17, textWeight: FontWeight.w600, textColor: brownCoffeeColor, paddingTop: 10, paddingBottom: 0, paddingLeft: 10, aligment: Alignment.topCenter)
+              TitleWidget(text: categorie.name.toUpperCase(), size: 17, textWeight: FontWeight.w600, textColor: brownCoffeeColor, paddingTop: 10, paddingBottom: 0, paddingLeft: 10, aligment: Alignment.topCenter)
             ],
           ),
         ),

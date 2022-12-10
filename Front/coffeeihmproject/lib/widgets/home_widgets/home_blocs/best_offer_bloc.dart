@@ -15,7 +15,7 @@ class BestOfferBloc extends StatelessWidget {
         itemBuilder: ((context, index) {
           return InkWell(
               onTap: () {
-                debug.log("Best offer $index: ${bestOffers.elementAt(index).modelId}");
+                debug.log("Best offer $index: ${bestOffers.elementAt(index)}");
               },
               child:
                   BestOfferWidget(itemData: bestOffers.elementAt(index)));

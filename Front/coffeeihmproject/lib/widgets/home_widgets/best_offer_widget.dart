@@ -47,9 +47,9 @@ class BestOfferWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    TitleWidget(text: itemData.modelName.isNotEmpty?itemData.modelName: "item###" , size: 22, textWeight: FontWeight.w500, textColor: Colors.black, paddingTop: 0, paddingBottom: 0, paddingLeft: 5, aligment: Alignment.centerLeft),
-                    PriceWidget(price: itemData.modelPrice, percentage: itemData.modelPercentage, height: 45, width: 170, iconSize: 20, fontSize: 22),
-                    RatingHor(rating: itemData.modelRate, height: 40, width: 140, iconSize: 20, fontSize: 22)
+                    TitleWidget(text: itemData.modelName.isNotEmpty?itemData.modelName: "item###" , size: 18, textWeight: FontWeight.w500, textColor: Colors.black, paddingTop: 0, paddingBottom: 0, paddingLeft: 5, aligment: Alignment.centerLeft),
+                    PriceWidget(price: itemData.modelPrice, percentage: itemData.modelPercentage, height: 45, width: 170, iconSize: 20, fontSize: 18),
+                    RatingHor(rating: itemData.modelRate, height: 40, width: 140, iconSize: 20, fontSize: 18)
                   
                   ],
                 ),

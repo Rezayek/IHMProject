@@ -71,7 +71,7 @@ class _LoginViewState extends State<LoginView> {
               children: [
                 Padding(
                     padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).size.height * 0.11)),
+                        top: MediaQuery.of(context).size.height * 0.10)),
                 Center(
                   child: Container(
                     height: 100,
@@ -111,7 +111,7 @@ class _LoginViewState extends State<LoginView> {
                               textWeight: FontWeight.w600,
                               textColor: coffeeCakeColor,
                               paddingTop: 10,
-                              paddingBottom: 20,
+                              paddingBottom: 15,
                               paddingLeft: 0,
                               aligment: Alignment.topCenter,
                             ),
@@ -144,7 +144,7 @@ class _LoginViewState extends State<LoginView> {
                               textColor: coffeeCakeColor,
                               paddingTop: 5,
                               paddingBottom: 10,
-                              paddingLeft: 15,
+                              paddingLeft: 10,
                               aligment: Alignment.centerLeft,
                             ),
                             InputWidget(
@@ -156,7 +156,7 @@ class _LoginViewState extends State<LoginView> {
                               isObscure: true,
                               hintText: "Enter password",
                               paddingTop: 5,
-                              paddingBottom: 15,
+                              paddingBottom: 10,
                               paddingLeft: 12,
                             ),
                             SizedBox(
@@ -171,7 +171,7 @@ class _LoginViewState extends State<LoginView> {
                                     textWeight: FontWeight.w400,
                                     textColor: coffeeCakeColor,
                                     paddingTop: 5,
-                                    paddingBottom: 15,
+                                    paddingBottom: 10,
                                     paddingLeft: 0,
                                     aligment: Alignment.centerLeft,
                                   ),
@@ -184,7 +184,7 @@ class _LoginViewState extends State<LoginView> {
                                       textColor:
                                           Color.fromARGB(255, 0, 139, 253),
                                       paddingTop: 5,
-                                      paddingBottom: 15,
+                                      paddingBottom: 10,
                                       paddingLeft: 0,
                                       aligment: Alignment.centerLeft,
                                     ),

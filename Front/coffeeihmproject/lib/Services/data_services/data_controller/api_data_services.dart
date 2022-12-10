@@ -15,7 +15,7 @@ class APIDataServices implements DataProvider {
   Future<Iterable<DataModel>> getBestOffer() async => await provider.getBestOffer();
 
   @override
-  Future<List<DataModel>> getCategorieItems({required Categories categorie}) =>
+  Future<Iterable<DataModel>> getCategorieItems({required Categories categorie}) =>
       provider.getCategorieItems(categorie: categorie);
 
   @override

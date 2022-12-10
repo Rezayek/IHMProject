@@ -29,6 +29,8 @@ class TitleWidget extends StatelessWidget {
             top: paddingTop, bottom: paddingBottom, left: paddingLeft),
         child: Text(
           text,
+          overflow: TextOverflow.ellipsis,
+          maxLines: 1,
           style: TextStyle(
             color: textColor,
             fontWeight: textWeight,

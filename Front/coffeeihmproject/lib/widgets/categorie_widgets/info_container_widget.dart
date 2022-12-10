@@ -14,7 +14,7 @@ class InfoContainerWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return SizedBox(
       height: 80,
-      width: MediaQuery.of(context).size.width * 0.35,
+      width: MediaQuery.of(context).size.width * 0.37,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         crossAxisAlignment: CrossAxisAlignment.center,

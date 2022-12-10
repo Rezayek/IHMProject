@@ -1,8 +1,11 @@
 import 'package:coffeeihmproject/widgets/drawer/drawer_item.dart';
 import 'package:coffeeihmproject/widgets/drawer/user_data_container.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
+import '../../Services/auth/bloc/auth_bloc.dart';
+import '../../Services/auth/bloc/auth_event.dart';
 import '../../constants/colors.dart';
 
 class DrwerView extends StatefulWidget {
@@ -30,12 +33,18 @@ class _DrwerViewState extends State<DrwerView> {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
                 crossAxisAlignment: CrossAxisAlignment.start,
-                children: const [
+                children:  [
                   DrawerItem(icon: Icons.delivery_dining, text: "Follow your purchase"),
                   DrawerItem(icon: Icons.history_rounded, text: "Purchases History"),
                   DrawerItem(icon: Icons.settings, text: "Settings"),
                   DrawerItem(icon: Icons.coffee, text: "About us"),
-                  DrawerItem(icon: Icons.logout_outlined, text: "Logout"),
+                  InkWell(
+                    onTap: (){
+                      context
+                      .read<AuthBloc>()
+                      .add(const AuthEventLogOut());
+                    },
+                    child: DrawerItem(icon: Icons.logout_outlined, text: "Logout")),
                 ],
               ),
             ),

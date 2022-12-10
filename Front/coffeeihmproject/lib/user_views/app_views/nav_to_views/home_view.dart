@@ -23,20 +23,6 @@ class HomeView extends StatefulWidget {
 
 class _HomeViewState extends State<HomeView> {
   
-  late Future topItems;
-  List<DataModel> items = List.generate(
-      5,
-      (index) => const DataModel(
-          modelId: "",
-          modelName: "",
-          modelImageUrl: "",
-          modelPrice: "",
-          modelPercentage: "5",
-          modelRank: "",
-          modelRate: "",
-          modelDescription: "",
-          modelIsAvailable: false));
-
   @override
   void initState() {
     context.read<DataBloc>().add(const DataEventHomeDataBestOffer());

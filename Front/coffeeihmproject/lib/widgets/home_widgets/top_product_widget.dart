@@ -44,15 +44,15 @@ class TopProductWidget extends StatelessWidget {
                     height: 40,
                     width: 40,
                     decoration: BoxDecoration(
-                      color: Colors.black.withOpacity(0.3),
+                      color: Colors.black.withOpacity(0.6),
                       borderRadius: BorderRadius.circular(60)
                     ),
-                    child: TitleWidget(text: itemData.modelRank.isNotEmpty? itemData.modelRank: "?", size: 25, textWeight: FontWeight.w600, textColor: orangeCoffeeColor, paddingTop: 0, paddingBottom: 0, paddingLeft: 15, aligment: Alignment.centerLeft),
+                    child: TitleWidget(text: itemData.modelRank.isNotEmpty? itemData.modelRank: "?", size: 22, textWeight: FontWeight.w600, textColor: orangeCoffeeColor, paddingTop: 0, paddingBottom: 0, paddingLeft: 15, aligment: Alignment.centerLeft),
                   ),
                   ),
               ],
             ),
-            TitleWidget(text:itemData.modelName.isNotEmpty? itemData.modelName: "#####" , size: 22, textWeight: FontWeight.w400, textColor: coffeeCakeColor, paddingTop: 10, paddingBottom: 0, paddingLeft: 0, aligment: Alignment.topCenter)
+            TitleWidget(text:itemData.modelName.isNotEmpty? itemData.modelName: "#####" , size: 20, textWeight: FontWeight.w400, textColor: coffeeCakeColor, paddingTop: 10, paddingBottom: 0, paddingLeft: 5, aligment: Alignment.topCenter)
           ],
         ) ,
     

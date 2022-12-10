@@ -78,7 +78,7 @@ class _SignUpWidgetState extends State<SignUpView> {
                 color: coldBrewCoffeeColor,
               )),
           title: TitleWidget(
-              text: "SingUp",
+              text: "SignUp",
               size: 35,
               textWeight: FontWeight.w600,
               textColor: coldBrewCoffeeColor,
@@ -248,7 +248,7 @@ class _SignUpWidgetState extends State<SignUpView> {
                       aligment: Alignment.centerLeft,
                     ),
                     InputWidget(
-                      controller: _userEmailController,
+                      controller: _userPhoneNumberController,
                       textColor: coffeeCakeColor,
                       fontWeight: FontWeight.w400,
                       fontSize: 18,

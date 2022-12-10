@@ -19,7 +19,7 @@ class TopItemsBloc extends StatelessWidget {
           itemBuilder: ((context, index) {
             return InkWell(
                 onTap: () {
-                  debug.log("top item $index: ${topItems.elementAt(index).modelId}");
+                  debug.log("top item $index: ${topItems.elementAt(index)}");
                 },
                 child: TopProductWidget(itemData: topItems.elementAt(index)));
           })),
