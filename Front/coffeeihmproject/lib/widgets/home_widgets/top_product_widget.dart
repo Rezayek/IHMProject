@@ -47,7 +47,7 @@ class TopProductWidget extends StatelessWidget {
                       color: Colors.black.withOpacity(0.6),
                       borderRadius: BorderRadius.circular(60)
                     ),
-                    child: TitleWidget(text: itemData.modelRank.isNotEmpty? itemData.modelRank: "?", size: 22, textWeight: FontWeight.w600, textColor: orangeCoffeeColor, paddingTop: 0, paddingBottom: 0, paddingLeft: 15, aligment: Alignment.centerLeft),
+                    child: TitleWidget(text: itemData.modelRank.isNotEmpty? itemData.modelRank: "?", size: 20, textWeight: FontWeight.w600, textColor: orangeCoffeeColor, paddingTop: 0, paddingBottom: 0, paddingLeft: 10, aligment: Alignment.centerLeft),
                   ),
                   ),
               ],

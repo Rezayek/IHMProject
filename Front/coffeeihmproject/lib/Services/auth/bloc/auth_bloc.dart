@@ -1,23 +1,32 @@
-import 'package:coffeeihmproject/Services/auth/api_controller/auth_provider.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../holders/current_user.dart';
+import '../../cart_services/cart_provider.dart';
 import '../api_controller/auth_services.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
+import 'dart:developer' as debug;
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   CurrentUser currentUser = CurrentUser();
-  AuthBloc(AuthServices provider) : super(const AuthStateUnInitialized()) {
+  CartProvider cartDb = CartProvider();
+  AuthBloc(AuthServices provider)
+      : super(const AuthStateUnInitialized(isLoading: false)) {
     on<AuthEventInitialize>(
-      ((event, emit) async {
+      (event, emit) async {
+        await provider.initialize();
         final user = provider.currentUser;
         if (user == null) {
-          emit(const AuthStateLoggedOut(exception: null));
+          debug.log("logout");
+          emit(const AuthStateLoggedOut(exception: null, isLoading: false));
+        } else if (!user.isEmailVerified) {
+          debug.log("logout-1");
+          emit(const AuthStateNeedsVerification(isLoading: false));
         } else {
-          emit(AuthStateLoggedIn(user: user));
+          debug.log("logout-2");
+          emit(AuthStateLoggedIn(user: user, isLoading: false));
         }
-      }),
+      },
     );
 
     on<AuthEventLogIn>(
@@ -25,20 +34,19 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
         final email = event.email;
         final password = event.password;
         try {
+          emit(const AuthStateLoggedOut(exception: null, isLoading: true));
           final user = await provider.logIn(email: email, password: password);
-          
-          currentUser.setUser(user);
-          
-          emit(AuthStateLoggedIn(user: user));
+          emit(const AuthStateLoggedOut(exception: null, isLoading: false));
+          emit(AuthStateLoggedIn(user: user, isLoading: false));
         } on Exception catch (e) {
-          emit(AuthStateLoggedOut(exception: e));
+          emit(AuthStateLoggedOut(exception: e, isLoading: false));
         }
       }),
     );
 
-    on<AuthEventShouldSignUp>(
+    on<AuthEventShouldRegister>(
       ((event, emit) {
-        emit(const AuthStateSignUp(exception: null));
+        emit(const AuthStateRegistering(exception: null, isLoading: false));
       }),
     );
 
@@ -50,18 +58,15 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       final phone = event.phone;
 
       try {
-        final user = await provider.signUp(
+        await provider.signUp(
             name: name,
             email: email,
             password: password,
             birthday: birthday,
             phoneNumber: phone);
-
-        currentUser.setUser(user);
-
-        emit(AuthStateLoggedIn(user: user));
+        emit(const AuthStateLoggedOut(exception: null, isLoading: false));
       } on Exception catch (e) {
-        emit(AuthStateSignUp(exception: e));
+        emit(AuthStateRegistering(exception: e, isLoading: false));
       }
     });
 
@@ -69,9 +74,26 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
       ((event, emit) async {
         try {
           await provider.logOut();
-          emit(const AuthStateLoggedOut(exception: null));
+          emit(const AuthStateLoggedOut(exception: null, isLoading: false));
         } on Exception catch (e) {
-          emit(AuthStateLoggedOut(exception: e));
+          emit(AuthStateLoggedOut(exception: e, isLoading: false));
+        }
+      }),
+    );
+
+    on<AddProductSEvent>(
+      ((event, emit) async {
+        try {
+          await cartDb.createCartItem(
+              userId: currentUser.getUser().userId,
+              itemId: event.itemId,
+              itemName: event.itemName,
+              itemCost: event.itemCost,
+              itemQte: event.itemQte,
+              itemImg: event.itemImg);
+          debug.log("added to cart");
+        } on Exception {
+          return;
         }
       }),
     );

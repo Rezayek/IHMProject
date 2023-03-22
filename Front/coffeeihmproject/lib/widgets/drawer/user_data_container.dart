@@ -49,7 +49,7 @@ class UserDataContainer extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       TitleWidget(
-                          text: "User: ${currentUser.getUser().userName}",
+                          text: "User: ${currentUser.getUser().name}",
                           size: 20,
                           textWeight: FontWeight.w700,
                           textColor: coffeeCakeColor,
@@ -65,7 +65,7 @@ class UserDataContainer extends StatelessWidget {
                             const Icon(FontAwesomeIcons.rankingStar,
                                 color: orangeCoffeeColor, size: 25),
                             TitleWidget(
-                                text: "Rank?",
+                                text: "Rank: ${currentUser.getUser().rank}",
                                 size: 20,
                                 textWeight: FontWeight.w600,
                                 textColor: coffeeCakeColor,
@@ -84,7 +84,7 @@ class UserDataContainer extends StatelessWidget {
                             const Icon(FontAwesomeIcons.coins,
                                 color: orangeCoffeeColor, size: 25),
                             TitleWidget(
-                                text: "Tokens?",
+                                text: "Tokens: ${currentUser.getUser().token}",
                                 size: 20,
                                 textWeight: FontWeight.w600,
                                 textColor: coffeeCakeColor,

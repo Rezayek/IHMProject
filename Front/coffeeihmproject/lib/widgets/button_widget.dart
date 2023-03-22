@@ -38,8 +38,8 @@ class ButtonWidget extends StatelessWidget {
           boxShadow: [
             BoxShadow(
               color:blackCoffeeColor.withOpacity(0.9),
-              offset: const Offset(0,5),
-              spreadRadius: 2
+              offset: const Offset(0,2),
+              blurRadius: 2
                )
           ]
         ),

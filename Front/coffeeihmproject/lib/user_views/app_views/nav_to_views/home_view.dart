@@ -13,6 +13,7 @@ import '../../../appContollers/best_offer_controller.dart';
 
 import '../../../constants/colors.dart';
 import '../../../widgets/home_widgets/categories_container_widget.dart';
+import '../../../widgets/home_widgets/label.dart';
 
 class HomeView extends StatefulWidget {
   const HomeView({Key? key}) : super(key: key);
@@ -41,41 +42,27 @@ class _HomeViewState extends State<HomeView> {
           Positioned(
               child: SingleChildScrollView(
             child: SizedBox(
-              height: 1250,
+              height: 1300,
               width: double.maxFinite,
               child: Column(
-                crossAxisAlignment: CrossAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Padding(padding: EdgeInsets.all(10)),
-                  TitleWidget(
-                      text: "Latest offers",
-                      size: 30,
-                      textWeight: FontWeight.w600,
-                      textColor: orangeCoffeeColor,
-                      paddingTop: 0,
-                      paddingBottom: 20,
-                      paddingLeft: 15,
-                      aligment: Alignment.centerLeft),
+                  Label(title: "Latest offers", gradiantColors: [orangeCoffeeColor, orangeCoffeeColor.withOpacity(0)], margin:const [10,10,10,], expanded: 0),
                   const SizedBox(
                     height: 190,
                     width: double.maxFinite,
                     child:  BestOfferController()),
-                  TitleWidget(
-                      text: "Top Products",
-                      size: 30,
-                      textWeight: FontWeight.w600,
-                      textColor: orangeCoffeeColor,
-                      paddingTop: 15,
-                      paddingBottom: 20,
-                      paddingLeft: 15,
-                      aligment: Alignment.centerLeft),
+                  Label(title: "Top Products", gradiantColors: [orangeCoffeeColor, orangeCoffeeColor.withOpacity(0)], margin:const [10,10,10,], expanded: 0),
                   const SizedBox(
                     height: 270,
                     width: double.maxFinite,
                     child: TopItemsController()),
-                  const Padding(
-                    padding: EdgeInsets.only(top: 20.0),
-                    child: CategoriesContainerWidget(),
+                  const Center(
+                    child: Padding(
+                      padding: EdgeInsets.only(top: 20.0),
+                      child: CategoriesContainerWidget(),
+                    ),
                   )
                 ],
               ),
