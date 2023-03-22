@@ -1,17 +1,18 @@
-import '../Services/auth/api_controller/auth_user.dart';
+import 'package:coffeeihmproject/Services/auth/user_cloud/user_data.dart';
+
+
 
 class CurrentUser {
   
-  AuthUser currentuser;
-  static final _shared = CurrentUser._sharedInstance(
-      const AuthUser(token: "", userId: 0, userName: "", userEmail: ""));
-  CurrentUser._sharedInstance(this.currentuser);
+  late UserData currentuser;
+  static final _shared = CurrentUser._sharedInstance();
+  CurrentUser._sharedInstance();
   factory CurrentUser() => _shared;
 
-  void setUser(AuthUser user) {
+  void setUser(UserData user) {
     currentuser = user;
   }
-  AuthUser getUser() {
+  UserData getUser() {
     return  currentuser;
   }
 }

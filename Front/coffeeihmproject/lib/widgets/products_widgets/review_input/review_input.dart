@@ -1,0 +1,43 @@
+import 'package:coffeeihmproject/constants/colors.dart';
+import 'package:flutter/material.dart';
+
+
+class ReviewInput extends StatefulWidget {
+  final double height;
+  final double width;
+  final TextEditingController textController;
+  const ReviewInput({super.key, required this.height, required this.width, required this.textController});
+
+  @override
+  State<ReviewInput> createState() => _ReviewInputState();
+}
+
+class _ReviewInputState extends State<ReviewInput> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      height: widget.height,
+      width: widget.width,
+      decoration: BoxDecoration(
+        color: coffeeCakeColor,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [BoxShadow(blurRadius: 1, offset: const Offset(1, 1), color: blackCoffeeColor.withOpacity(0.5))]
+      ),
+      child: Padding(
+        padding: const EdgeInsets.all(2.0),
+        child: TextField(
+          maxLines: null, 
+          minLines: null, 
+          autocorrect: true,
+          controller: widget.textController,
+          keyboardType: TextInputType.text,
+          decoration: const InputDecoration(
+            border: InputBorder.none,
+            hintText: "Write here...",
+
+          )
+        ),
+      ),
+    );
+  }
+}

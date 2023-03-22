@@ -32,19 +32,22 @@ class _DrwerViewState extends State<DrwerView> {
               width: 310,
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.center,
                 children:  [
-                  DrawerItem(icon: Icons.delivery_dining, text: "Follow your purchase"),
-                  DrawerItem(icon: Icons.history_rounded, text: "Purchases History"),
-                  DrawerItem(icon: Icons.settings, text: "Settings"),
-                  DrawerItem(icon: Icons.coffee, text: "About us"),
+                  const DrawerItem(icon: Icons.delivery_dining, text: "Follow your purchase"),
+                  const DrawerItem(icon: Icons.history_rounded, text: "Purchases History"),
+                  InkWell(
+                    onTap: () => Navigator.of(context).pushNamed("/chatbot"),
+                    child: const DrawerItem(icon: Icons.chat, text: "ChatBot")),
+                  const DrawerItem(icon: Icons.settings, text: "Settings"),
+                  const DrawerItem(icon: Icons.coffee, text: "About us"),
                   InkWell(
                     onTap: (){
                       context
                       .read<AuthBloc>()
                       .add(const AuthEventLogOut());
                     },
-                    child: DrawerItem(icon: Icons.logout_outlined, text: "Logout")),
+                    child: const DrawerItem(icon: Icons.logout_outlined, text: "Logout")),
                 ],
               ),
             ),

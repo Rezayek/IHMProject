@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../constants/host.dart';
+
 
 class ProductImageWidget extends StatelessWidget {
   final String itemImageUrl;
@@ -19,7 +19,7 @@ class ProductImageWidget extends StatelessWidget {
             ? const DecorationImage(
                 image: AssetImage('assets/default.jpg'), fit: BoxFit.fill)
             : DecorationImage(
-                image: NetworkImage(imgUrl + itemImageUrl), fit: BoxFit.fill),
+                image: NetworkImage(itemImageUrl), fit: BoxFit.fill),
       ),
     );
   }

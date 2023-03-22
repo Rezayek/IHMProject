@@ -51,6 +51,7 @@ class InputWidget extends StatelessWidget {
                 keyboardType: textType,
                 enableSuggestions: false,
                 decoration: InputDecoration(
+                  border: InputBorder.none,
                   focusedBorder: InputBorder.none,
                   hintText: hintText,
                   hintStyle: const TextStyle(

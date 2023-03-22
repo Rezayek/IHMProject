@@ -9,9 +9,14 @@ import 'dart:developer' as debug;
 
 import '../widgets/home_widgets/home_blocs/top_items_bloc.dart';
 
-class BestOfferController extends StatelessWidget {
+class BestOfferController extends StatefulWidget {
   const BestOfferController({Key? key}) : super(key: key);
 
+  @override
+  State<BestOfferController> createState() => _BestOfferControllerState();
+}
+
+class _BestOfferControllerState extends State<BestOfferController> {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DataBloc, DataState>(builder: (context, state) {
@@ -23,11 +28,7 @@ class BestOfferController extends StatelessWidget {
               bestOffers: state.bestOffers,
             ));
       } else {
-        return const Scaffold(
-          body: Center(
-            child: CircularProgressIndicator(),
-          ),
-        );
+        return const Center(child: CircularProgressIndicator());
       }
     });
   }

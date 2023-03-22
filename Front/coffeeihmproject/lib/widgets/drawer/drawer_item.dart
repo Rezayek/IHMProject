@@ -10,17 +10,18 @@ class DrawerItem extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(3.0),
+      padding: EdgeInsets.only(top: MediaQuery.of(context).size.height * 0.015),
       child: Container(
-        height: 75,
-        width: 310,
+        height: MediaQuery.of(context).size.height * 0.075,
+        width: MediaQuery.of(context).size.width * 0.75,
         decoration: BoxDecoration(
-          color: arabicCoffeeColor.withOpacity(0.8),
+          color: arabicCoffeeColor,
+          borderRadius: BorderRadius.circular(10),
           boxShadow: const [
            BoxShadow(
-            color: blackCoffeeColor,
-            offset: Offset(0, 5),
-            spreadRadius: 2,
+            color: coffeeCakeColor,
+            offset: Offset(1, 1),
+            blurRadius: 2,
           )
         ]),
         child: Row(
@@ -31,11 +32,11 @@ class DrawerItem extends StatelessWidget {
               padding: const EdgeInsets.only(left: 10),
               child: Icon(
                 icon,
-                size: 40,
+                size: 30,
                 color: blackCoffeeColor,
               ),
             ),
-            TitleWidget(text: text, size: 22, textWeight: FontWeight.w500, textColor: coffeeCakeColor, paddingTop: 0, paddingBottom: 0, paddingLeft: 5, aligment: Alignment.centerLeft)
+            TitleWidget(text: text, size: 20, textWeight: FontWeight.w400, textColor: coffeeCakeColor, paddingTop: 0, paddingBottom: 0, paddingLeft: 5, aligment: Alignment.centerLeft)
           ],
         ),
       ),

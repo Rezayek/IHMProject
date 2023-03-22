@@ -14,7 +14,7 @@ class CategorieHolder extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        context.read<NavigatorNavBloc>().add(EventGoToCategorie(categorie));
+        Navigator.of(context).pushNamed("/categorie", arguments: categorie); 
       },
       child: Padding(
         padding: const EdgeInsets.all(5.0),

@@ -4,34 +4,31 @@ import 'package:coffeeihmproject/Services/data_services/categorie_bloc/categorie
 import 'package:coffeeihmproject/widgets/background_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import '../../../Services/navigator/navigator_bloc.dart';
+import '../../../Services/data_services/data_controller/api_data_services.dart';
 import '../../../appContollers/categorie_items_controller.dart';
 import '../../../constants/colors.dart';
-import '../../../widgets/categorie_widgets/categorie_widget_bloc.dart';
 import '../../../widgets/drawer/drawer_view.dart';
 import '../../../widgets/home_widgets/categories_container_widget.dart';
 import '../../../widgets/title_widget.dart';
-import 'dart:developer' as debug;
 
 class CategorieView extends StatefulWidget {
-  final Categories categorie;
-  const CategorieView({Key? key, required this.categorie}) : super(key: key);
+  const CategorieView({Key? key}) : super(key: key);
 
   @override
-  State<CategorieView> createState() => _CategorieViewState(categorie);
+  State<CategorieView> createState() => _CategorieViewState();
 }
 
 class _CategorieViewState extends State<CategorieView> {
-  final Categories categorie;
-  _CategorieViewState(this.categorie);
+  _CategorieViewState();
 
   @override
   void initState() {
-    context.read<CategorieBlocBloc>().add(EventGetCategorieItems(categorie));
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
+    final categorie = ModalRoute.of(context)!.settings.arguments as Categories;
     return Scaffold(
       appBar: AppBar(
         backgroundColor: arabicCoffeeColor.withOpacity(0.8),
@@ -55,29 +52,26 @@ class _CategorieViewState extends State<CategorieView> {
           ],
         ),
       ),
-      body: Stack(
-        alignment: Alignment.center,
-        children:  [
-          const Positioned(child: BackgroundWidget()),
-          Positioned(
-            child:Padding(
+      body: BlocProvider<CategorieBlocBloc>(
+        create: (context) =>  CategorieBlocBloc(APIDataServices()),
+        child: Stack(
+          alignment: Alignment.center,
+          children: [
+            const Positioned(child: BackgroundWidget()),
+            Positioned(
+                child: Padding(
               padding: const EdgeInsets.only(top: 12.0),
               child: SizedBox(
-              height: 1000,
-              width: MediaQuery.of(context).size.width,
-              child: const CategorieItemsController(),
-                      ),
-            ) )
-        ],
+                height: 1000,
+                width: MediaQuery.of(context).size.width,
+                child: CategorieItemsController(categorie: categorie),
+              ),
+            ))
+          ],
+        ),
       ),
       drawer: const DrwerView(),
-      floatingActionButton: FloatingActionButton(
-        backgroundColor: orangeCoffeeColor.withOpacity(0.8),
-        onPressed: () {
-          context.read<NavigatorNavBloc>().add(const EventGoToMain(0));
-        },
-        child: const Icon(Icons.home, size: 30, color: blackCoffeeColor),
-      ),
+      
     );
   }
 }
